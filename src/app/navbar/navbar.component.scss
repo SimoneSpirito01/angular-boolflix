@@ -1,0 +1,29 @@
+nav {
+    ul {
+        display: flex;
+        list-style: none;
+        margin-bottom: 0;
+
+        li {
+            a{
+                color: #bdbdbd;
+            margin: 0 10px;
+            cursor: pointer;
+            text-decoration: none;
+
+            &.active {
+                color: white;
+            }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+nav {
+    ul {
+        font-size: 12px;
+        padding: 0;
+    }
+}
+}

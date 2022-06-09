@@ -1,0 +1,29 @@
+<div *ngIf="!!content" class="my_card">
+  <div class="poster">
+    <img
+      class="background"
+      *ngIf="!!content.poster_path || !!content.backdrop_path"
+      src="https://image.tmdb.org/t/p/w342/{{
+        content.poster_path || !!content.backdrop_path
+      }}"
+      alt="{{ content.title }}"
+    />
+
+    <div
+      *ngIf="!content.poster_path"
+      class="d-flex justify-content-center align-items-center h-100"
+    >
+      {{ content.title || content.name }}
+    </div>
+    <img
+      *ngIf="content.boolflix"
+      class="b-logo"
+      src="../../assets/img/b-boolflix.png"
+      alt="b-logo"
+    />
+  </div>
+  <h4 class="mt-2 text-center">{{ content.title || content.name }}</h4>
+  <div *ngIf="!!content?.vote_average" class="text-center pb-2">
+    Voto: <i *ngFor="let star of [].constructor(content.vote_average)" class="fa-solid fa-star my_star"></i>
+  </div>
+</div>

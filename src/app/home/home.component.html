@@ -1,0 +1,54 @@
+<div *ngIf="!!movies?.length || !!series?.length">
+  <app-filters
+    [(filters)]="filters"
+    (filtersChange)="updateFilters()"
+  ></app-filters>
+  <div class="title">
+    <div class="left d-flex justify-content-between align-items-center my-3">
+      <div >
+        <h1 *ngIf="!query">Popolari oggi</h1>
+        <h1 *ngIf="!!query">
+          Trovati {{ movies.length + series.length }} risultati per "{{
+            query
+          }}"
+        </h1>
+      </div>
+      <div>
+        <div class="dx-field mb-2">
+          <div class="dx-field-label">Seleziona vista</div>
+          <div class="dx-field-value">
+            <dx-select-box [items]="modes" [value]="modes[0]" (onValueChanged)="handleModeChange($event.value)"></dx-select-box>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div *ngIf="!!filters?.length && (!selectedMode || selectedMode == 'Default')" class="right">
+      <span
+        *ngFor="let filter of filters"
+        class="badge badge-pill badge-primary my_pills ms-1"
+        ><span (click)="removeFilter(filter.id)">X</span>
+        {{ filter?.name }}</span
+      >
+    </div> -->
+  </div>
+  <app-category
+    (eventEmitter)="handleEventEmitter($event)"
+    (detailsEvent)="handleDetailsEvent($event)"
+    *ngIf="!!movies?.length"
+    type="movies"
+    [contents]="movies"
+    [mode]="selectedMode"
+  ></app-category>
+  <app-category
+    (eventEmitter)="handleEventEmitter($event)"
+    (detailsEvent)="handleDetailsEvent($event)"
+
+    *ngIf="!!series?.length"
+    type="series"
+    [contents]="series"
+    [mode]="selectedMode"
+  ></app-category>
+</div>
+<div *ngIf="!!query && !movies?.length && !series?.length">
+  <h1>Nessun risultato per "{{ query }}"</h1>
+</div>

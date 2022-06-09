@@ -1,0 +1,29 @@
+.category {
+  margin-bottom: 30px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.my_card {
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+
+  img {
+    &.background {
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    &.b-logo {
+      width: 12px;
+      height: 24px;
+      position: absolute;
+      top: 7px;
+      left: 7px;
+    }
+  }
+}

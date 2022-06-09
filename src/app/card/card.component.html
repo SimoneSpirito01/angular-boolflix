@@ -1,0 +1,49 @@
+<div
+  class="my_card text-white"
+  [class.active]="hover"
+  (mouseenter)="setHover(true)"
+  (mouseleave)="setHover(false)"
+  (click)="!onlyHeart ? handleClick(content) : handleDetails(content.id)"
+>
+  <div *ngIf="!hover" class="poster">
+    <img
+      class="background"
+      *ngIf="!!content.backdrop_path"
+      src="https://image.tmdb.org/t/p/w342/{{ content.backdrop_path }}"
+      alt="{{ content.title }}"
+    />
+    <div
+      *ngIf="!content.backdrop_path"
+      class="d-flex justify-content-center align-items-center h-100"
+    >
+      {{ content.title || content.name }}
+    </div>
+    <img
+      *ngIf="content.boolflix"
+      class="b-logo"
+      src="../../assets/img/b-boolflix.png"
+      alt="b-logo"
+    />
+  </div>
+
+  <div *ngIf="!!hover" class="info d-flex">
+    <div class="left">
+      <div *ngIf="!!content.title || !!content.name">
+        <strong>Titolo:</strong> {{ content.title || content.name }}
+      </div>
+      <div *ngIf="!!content.genre_ids?.length">
+        <strong>Generi:</strong>
+        <span class="genre" >
+          {{ content.genres }}</span
+        >
+      </div>
+      <div *ngIf="!!content.overview">
+        <strong>Trama:</strong> {{ content.overview }}
+      </div>
+    </div>
+    <div class="right">
+      <i *ngIf="!favorite" class="fa-regular fa-heart"></i>
+      <i *ngIf="!!favorite" (click)="!!onlyHeart && handleClick(content)" class="fa-solid fa-heart red"></i>
+    </div>
+  </div>
+</div>

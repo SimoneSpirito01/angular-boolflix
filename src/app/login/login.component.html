@@ -1,0 +1,37 @@
+<form id="my_form" class="d-flex justify-content-center pt-5" #myForm action="your-action" (submit)="onFormSubmit($event)">
+  <dx-form
+    id="form"
+    [formData]="[]"
+    [readOnly]="false"
+    [showColonAfterLabel]="true"
+    [showValidationSummary]="true"
+    validationGroup="customerData"
+  >
+    <dxi-item itemType="group" caption="Accedi">
+      <dxi-item dataField="Email">
+        <dxi-validation-rule type="required" message="Il campo email non può essere vouto">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="async"
+          message="Nessun account trovato con la tua email"
+          [validationCallback]="emailValidation"
+        ></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item dataField="Password" [editorOptions]="{ mode: 'password' }">
+        <dxi-validation-rule type="required" message="Il campo password non può essere vouto">
+        </dxi-validation-rule>
+        <dxi-validation-rule
+          type="async"
+          message="Password errata"
+          [validationCallback]="passwordValidation"
+        ></dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+    <dxi-item
+      itemType="button"
+      horizontalAlignment="left"
+      [buttonOptions]="buttonOptions"
+    >
+    </dxi-item>
+  </dx-form>
+</form>

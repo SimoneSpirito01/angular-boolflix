@@ -1,0 +1,26 @@
+
+<div class="pt-3 d-flex justify-content-end">
+    <div class="dx-field w-25">
+        <div class="dx-field-value">
+          <dx-tag-box
+            [dataSource]="activeFilters"
+            displayExpr="name"
+            valueExpr="id"
+            itemTemplate="customItem"
+            placeholder="Filtra per categoria"
+            (onValueChanged)="setSelectedFilters($event)"
+          >
+            <
+            <div *dxTemplate="let activeFilter of 'customItem'">
+              <button
+                [class.active]="checkIfSelected(activeFilter)"
+                type="button"
+                class="filter btn btn-secondary btn-sm"
+              >
+                {{ activeFilter.name }}
+              </button>
+            </div>
+          </dx-tag-box>
+        </div>
+      </div>
+</div>

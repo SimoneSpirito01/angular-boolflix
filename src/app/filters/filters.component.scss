@@ -1,0 +1,18 @@
+
+  .filter {
+    margin: 10px 5px;
+    border: none;
+    background-color: #0b0b0b;
+    color: #bdbdbd;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &.active {
+      background-color: #5c636a;
+      border-color: #565e64;
+      box-shadow: 0 0 0 0.25rem rgb(130 138 145 / 50%);
+    }
+  }
+

@@ -1,0 +1,53 @@
+header {
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(20, 20, 20);
+    z-index: 100;
+
+    .left, .right {
+        display: flex;
+        align-items: center;
+
+        > * {
+            margin: 0 10px;
+
+            img {
+                border-radius: 6px;
+                margin-right: 8px;
+                margin-bottom: 2px;
+            }
+        }
+    }
+
+    .right {
+        .bell {
+            cursor: pointer;
+            
+            svg {
+                font-size: 25px;
+            }
+        }
+
+        .account {
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        height: 70px;
+        padding: 0 10px;
+
+        .left {
+            flex-direction: row-reverse;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<div *ngIf="!!favorites?.length">
+  <h1 class="mb-4">I tuoi preferiti:</h1>
+  <app-category
+    (eventEmitter)="handleEventEmitter($event)"
+    (detailsEvent)="handleDetailsEvent($event)"
+    [contents]="favorites"
+    [onlyHeart]="true"
+  ></app-category>
+</div>
+<h1 *ngIf="!favorites?.length" class="pt-4">
+  Non hai aggiunto nessun contenuto alla lista dei preferiti.
+</h1>

@@ -1,0 +1,37 @@
+<header>
+  <div class="left">
+    <app-logo></app-logo>
+    <content *ngIf="!!loggedUser">
+      <app-navbar></app-navbar>
+    </content>
+  </div>
+
+  <div *ngIf="!!loggedUser" class="right">
+    <app-search-bar></app-search-bar>
+    <!-- <div class="bell"><i class="fas fa-bell"></i></div>
+    <div class="account">
+      <img
+        src="https://occ-0-2943-784.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABcD7ar6C7nv9U2YfOu33ikPAO4VittMNlwNlhsCdAxmbJYGrr46WCmGJfN4fkZ1D3AufurqS0kCYDoV4La-_xxI.png?r=318"
+        alt="profile-image"
+      />
+      <i class="fas fa-sort-down"></i>
+    </div>
+    <div class="text-white">{{ loggedUser }}</div> -->
+    <div class="dx-field text-white">
+      <div class="dx-field-value">
+        <dx-drop-down-button
+          [text]="loggedUser"
+          [dropDownOptions]="{ width: 230 }"
+          icon="https://occ-0-2943-784.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABcD7ar6C7nv9U2YfOu33ikPAO4VittMNlwNlhsCdAxmbJYGrr46WCmGJfN4fkZ1D3AufurqS0kCYDoV4La-_xxI.png?r=318"
+          [items]="['Logout']"
+          (onItemClick)="onItemClick($event)"
+        ></dx-drop-down-button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loggedUser" class="right">
+    <h3 class="text-white mb-0">Accedi o Registrati</h3>
+  </div>
+
+</header>

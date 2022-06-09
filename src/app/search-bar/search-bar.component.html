@@ -1,0 +1,21 @@
+<div class="query">
+  <form action="#" class="d-flex">
+    <input
+      type="search"
+      id="cerca"
+      name="cerca"
+      [(ngModel)]="query"
+      (keyup.enter)="search()"
+    />
+    <button type="button" (click)="search()">Cerca</button>
+    <!-- <dx-tree-list
+      id="tasks"
+      keyExpr="Task_ID"
+      parentIdExpr="Task_Parent_ID"
+      [columnAutoWidth]="true"
+      [wordWrapEnabled]="true"
+      [showBorders]="true"
+      ><dxo-search-panel [visible]="true"></dxo-search-panel
+    ></dx-tree-list> -->
+  </form>
+</div>

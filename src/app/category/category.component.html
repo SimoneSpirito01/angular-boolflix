@@ -1,0 +1,86 @@
+<content *ngIf="!!contents">
+
+  <h2 *ngIf="!!type" class="mb-4">{{ type == "movies" ? "Film" : "Serie" }}</h2>
+
+  <content *ngIf="!mode || mode == 'Default'" class="category">
+    <div
+      class="row row-cols-2 row-cols-md-4 row-cols-lg-6 justify-content-center justify-content-md-start"
+    >
+      <div *ngFor="let content of contents" class="col">
+        <app-card
+          (clickEvent)="handleEventEmitter($event)"
+          (detailsEvent)="handleDetailsEvent($event)"
+          [onlyHeart]="!!onlyHeart"
+          [content]="content"
+        ></app-card>
+      </div>
+    </div>
+  </content>
+
+  <content *ngIf="mode == 'Griglia'">
+
+    <content *ngIf="type == 'movies'" class="mb-3">
+      <dx-data-grid
+        id="gridContainer"
+        [dataSource]="contents"
+        keyExpr="id"
+        [columns]="['title', 'genres', 'vote_average']"
+        [showBorders]="true"
+        (onCellClick)="handleDetailsEvent($event.data.id)"
+      >
+      </dx-data-grid>
+    </content>
+
+    <content *ngIf="type == 'series'" class="mb-3">
+      <dx-data-grid
+        id="gridContainer"
+        [dataSource]="contents"
+        keyExpr="id"
+        [columns]="['name', 'genres', 'vote_average']"
+        [showBorders]="true"
+      >
+      </dx-data-grid>
+    </content>
+
+  </content>
+
+  <content *ngIf="mode == 'Carosello'">
+
+    <dx-gallery
+      #gallery
+      id="gallery"
+      [dataSource]="contents"
+      [width]="'100%'"
+      [height]="300"
+      [showNavButtons]="true"
+      [showIndicator]="true"
+      itemTemplate="item"
+      [initialItemWidth]="300"
+    >
+      <div *dxTemplate="let content of 'item'">
+        <div class="my_card" (click)="handleDetailsEvent(content.id)">
+          <img
+            class="background"
+            *ngIf="!!content.backdrop_path"
+            src="https://image.tmdb.org/t/p/w342/{{ content.backdrop_path }}"
+            alt="{{ content.title }}"
+          />
+          <div
+            *ngIf="!content.backdrop_path"
+            class="d-flex justify-content-center align-items-center h-100"
+          >
+            {{ content.title || content.name }}
+          </div>
+          <img
+            *ngIf="content.boolflix"
+            class="b-logo"
+            src="../../assets/img/b-boolflix.png"
+            alt="b-logo"
+          />
+        </div>
+      </div>
+    </dx-gallery>
+
+  </content>
+
+</content>

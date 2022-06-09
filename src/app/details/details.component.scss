@@ -1,0 +1,97 @@
+.my_card {
+    width: 400px;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: transform 0.5s, font-size 0.5s, z-index 0.5s, position 0.5s;
+    transition-delay: 0s;
+    border-radius: 10px;
+    background-color: #141414;
+    position: relative;
+    margin: 0 auto;
+
+    .my_star {
+      color: gold;
+    }
+    
+    @media (max-width: 576px) {
+      .filter {
+        font-size: 9px;
+      }
+    }
+  
+    &.active {
+      transform: scale(1.5);
+      position: relative;
+      z-index: 10;
+      font-size: 10px;
+  
+      .info {
+        font-size: 10px;
+      }
+    }
+  
+    .poster {
+  
+      img {
+        &.background {
+          width: 100%;
+          display: block;
+          border-radius: 10px;
+        }
+  
+        &.b-logo {
+          width: 12px;
+          height: 24px;
+          position: absolute;
+          top: 7px;
+          left: 7px;
+        }
+      }
+    }
+    .info {
+      width: 85%;
+      height: 100%;
+      padding: 10px 0;
+      margin: 0 auto;
+  
+      .red {
+        color: red;
+      }
+  
+      .right {
+        font-size: 14px;
+      }
+  
+      .left > div {
+        margin: 0;
+        padding: 5px 5px 5px 0;
+  
+        img {
+          width: 40px;
+        }
+  
+        svg {
+          color: #febc00;
+        }
+  
+        .cast {
+          list-style: square inside
+            url("data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==");
+          list-style-position: outside;
+          padding-left: 0.8rem;
+          margin-bottom: 0;
+        }
+  
+        .genre:not(:last-child)::after {
+          content: ",";
+        }
+      }
+    }
+  }
+
+  
+  @media (min-width: 1700px) {
+    .my_card {
+      max-height: 120px;
+    }
+  }
